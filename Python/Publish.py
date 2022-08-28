@@ -84,8 +84,8 @@ def publish(client):
 
 
 def run():
-    room1201.write(str.encode('Start\r\n'))
-    room1202.write(str.encode('Start\r\n'))
+    # room1201.write(str.encode('Start\r\n'))
+    # room1202.write(str.encode('Start\r\n'))
     client = connect_mqtt()
     client.loop_start()
 

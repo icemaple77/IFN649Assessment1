@@ -27,7 +27,7 @@ void setup() {
 }
 
 void loop() {
-  if(Serial1.available() > 0){ // Checks whether data is comming from the serial port
+//  if(Serial1.available() > 0){ // Checks whether data is comming from the serial port
     digitalWrite(LEDPIN, HIGH);
     
     float h = dht.readHumidity();
@@ -35,14 +35,14 @@ void loop() {
     float t = dht.readTemperature();
     delay(1000);
 
-    Serial.print(F(" *ROOM1201* "));
+    Serial.print(F(" ROOM1202 "));
     Serial.print(F(" Humidity : "));
     Serial.print(h);
     Serial.print(F(" %  Temperature : "));
     Serial.print(t);
     Serial.println(F("C "));
     delay(1000);
-    Serial1.print(F(" *ROOM1201* "));
+    Serial1.print(F(" ROOM1202 "));
     Serial1.print(F(" Humidity : "));
     Serial1.print(h);    
     Serial1.print(F(" %  Temperature : "));
@@ -54,4 +54,4 @@ void loop() {
     digitalWrite(LEDPIN, LOW);
     delay(1000);
  }
-}
+//}
