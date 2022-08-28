@@ -38,13 +38,13 @@ def controlAlarm(data):
                
         if (RawData["title"]=="Humidity"):
             if(float(RawData["degree"])>60) :
-                ser.write(bytes("2", 'utf-8'))
+                ser.write(bytes("1", 'utf-8'))
            
                 
     if(RawData["roomNO"]=="*ROOM1202*"):
         if (RawData["title"]=="Temperature"):
             if(float(RawData["degree"])>25):
-                ser.write(bytes("1", 'utf-8'))
+                ser.write(bytes("2", 'utf-8'))
          
               
         if (RawData["title"]=="Humidity"):
