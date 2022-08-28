@@ -2,7 +2,7 @@
 import serial
 import time
 import random
-import os
+
 from paho.mqtt import client as mqtt_client
 import paho.mqtt.publish as publish
 # reading and writing data from and to arduino serially.
@@ -63,9 +63,6 @@ def sendMsg(client,topic,data):
         print(f"Failed to send message to topic {topic}")
     
 def publish(client):
-
-   
-
     while True:
         time.sleep(0.0001)
         h1,t1=getSerialData(room1201)
@@ -79,7 +76,7 @@ def publish(client):
         sendMsg(client,t2Topic,t2)
         sendMsg(client,h2Topic,h2)
         
-        os.system( 'cls' )
+        
         
 
 

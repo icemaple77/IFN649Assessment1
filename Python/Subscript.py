@@ -1,12 +1,14 @@
 import paho.mqtt.client as mqtt
 import serial
 import json
-import os
+
 
 ser = serial.Serial("/dev/rfcomm2", 9600)
 Server="linux.chenyun.org"
 Port=1883
 topic="QUTGP/sblock/level12/#"
+temperatureStandard= 25
+humiditystandard=60
 
 
 def on_connect(client, userdata, flags, rc): 
@@ -29,29 +31,29 @@ def on_message(client, userdata, msg):
     
 def controlAlarm(data):
     print(data)
-    os.system( 'cls' )
+ 
     RawData = json.loads(data)
     RawData["title"]
     #print (mes_to_dict["title"])
     if(RawData["roomNO"]=="*ROOM1201*"):
         if (RawData["title"]=="Temperature"):
-            if(float(RawData["degree"])>25):
+            if(float(RawData["degree"])>temperatureStandard):
                 ser.write(bytes("1", 'utf-8'))
            
                
         if (RawData["title"]=="Humidity"):
-            if(float(RawData["degree"])>60) :
+            if(float(RawData["degree"])>humiditystandard) :
                 ser.write(bytes("1", 'utf-8'))
            
                 
     if(RawData["roomNO"]=="*ROOM1202*"):
         if (RawData["title"]=="Temperature"):
-            if(float(RawData["degree"])>25):
+            if(float(RawData["degree"])>temperatureStandard):
                 ser.write(bytes("2", 'utf-8'))
          
               
         if (RawData["title"]=="Humidity"):
-            if(float(RawData["degree"])>60):
+            if(float(RawData["degree"])>humiditystandard):
                ser.write(bytes("2", 'utf-8'))
           
               
