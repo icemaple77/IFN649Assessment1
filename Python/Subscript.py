@@ -1,12 +1,14 @@
 import paho.mqtt.client as mqtt
-import json
 import serial
-import time
-import string
+import json
+import os
+
 ser = serial.Serial("/dev/rfcomm2", 9600)
 Server="linux.chenyun.org"
 Port=1883
-topic="#"
+topic="QUTGP/sblock/level12/#"
+
+
 def on_connect(client, userdata, flags, rc): 
     if rc == 0:
         print("Connected to MQTT Broker!")
@@ -19,7 +21,7 @@ def on_message(client, userdata, msg):
     #print(msg.topic+" "+str(msg.payload))
     data=str(msg.payload)
     shabi=data.split("'")
-    print(shabi[1])
+    #print(shabi[1])
     controlAlarm (shabi[1])
 # def alert_On():
 
@@ -27,6 +29,7 @@ def on_message(client, userdata, msg):
     
 def controlAlarm(data):
     print(data)
+    os.system( 'cls' )
     RawData = json.loads(data)
     RawData["title"]
     #print (mes_to_dict["title"])

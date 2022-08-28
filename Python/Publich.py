@@ -1,9 +1,8 @@
 #!/usr/bin/python3.9
 import serial
 import time
-import string
 import random
-import json
+import os
 from paho.mqtt import client as mqtt_client
 import paho.mqtt.publish as publish
 # reading and writing data from and to arduino serially.
@@ -79,6 +78,8 @@ def publish(client):
         sendMsg(client,h1Topic,h1)
         sendMsg(client,t2Topic,t2)
         sendMsg(client,h2Topic,h2)
+        
+        os.system( 'cls' )
         
 
 
